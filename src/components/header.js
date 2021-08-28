@@ -1,42 +1,56 @@
-import * as React from "react"
-import PropTypes from "prop-types"
-import { Link } from "gatsby"
+import React from 'react';
+import { Link } from 'gatsby';
+import Navegacion from './Navegacion';
+import {css} from '@emotion/react';
+import styled from '@emotion/styled';
 
-const Header = ({ siteTitle }) => (
-  <header
-    style={{
-      background: `rebeccapurple`,
-      marginBottom: `1.45rem`,
-    }}
-  >
-    <div
-      style={{
-        margin: `0 auto`,
-        maxWidth: 960,
-        padding: `1.45rem 1.0875rem`,
-      }}
-    >
-      <h1 style={{ margin: 0 }}>
-        <Link
-          to="/"
-          style={{
-            color: `white`,
-            textDecoration: `none`,
-          }}
+const Logo = styled(Link)`
+
+    text-decoration: none;
+    font-size: 5rem;
+    
+    p {
+        font-family: 'Lato', sans-serif;
+        color: #cdcdcd;
+        font-weight: lighter;
+        margin: 0;
+    }
+    
+    span {
+        font-weight: bold;
+        color: #ffffff;
+    }
+`;
+
+const Header = () => {
+    return (  
+        <header
+            css={css`
+                background-color: #0d283d;
+                padding: 1rem;
+            `}
         >
-          {siteTitle}
-        </Link>
-      </h1>
-    </div>
-  </header>
-)
+            <div 
+                css={css`
+                    max-width: 120rem;
+                    margin: 0 auto;
+                    text-align: center;
 
-Header.propTypes = {
-  siteTitle: PropTypes.string,
+                    @media (min-width: 768px) {
+                        display: flex;
+                        align-items: center;
+                        justify-content: space-between
+                    }
+                `}
+            >
+                <Logo to="/">
+                    <p>BIENES<span>RAICES</span></p>
+                </Logo>
+
+                <Navegacion />
+            </div>
+        </header>
+    );
 }
-
-Header.defaultProps = {
-  siteTitle: ``,
-}
-
-export default Header
+ 
+export default Header;
