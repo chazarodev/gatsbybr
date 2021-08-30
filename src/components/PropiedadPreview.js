@@ -40,13 +40,13 @@ const Contenido = styled.div`
 
 const PropiedadPreview = ({propiedad}) => {
 
-    const {nombre, descripcion, imagen, wc, estacionamiento, habitaciones, precio} = propiedad
+    const {nombre, imagen, wc, estacionamiento, habitaciones, precio} = propiedad
 
     // console.log(imagen)
 
     return (
         <Card>
-           <Img fluid={imagen?.localFile.sharp.fluid}/>
+           <Img fluid={imagen?.localFile?.sharp.fluid}/>
             <Contenido>
                 <h3>{nombre}</h3>
                 <p className="precio">${precio}</p>
@@ -55,7 +55,7 @@ const PropiedadPreview = ({propiedad}) => {
                     estacionamiento={estacionamiento}
                     habitaciones={habitaciones}
                 />
-                <Boton to={urlSlug(nombre)}>
+                <Boton to={`/${urlSlug(nombre)}`}>
                     Visitar Propiedad
                 </Boton>
             </Contenido>
